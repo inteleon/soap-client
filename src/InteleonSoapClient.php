@@ -114,7 +114,6 @@ class InteleonSoapClient extends SoapClient
      */
     public function __doRequest($request, $location, $action, $version, $one_way = 0)
     {
-        echo "Tjena!";
         for ($attempt = 0; $attempt < $this->connect_attempts; $attempt++) {
 
             $ch = curl_init($location);
