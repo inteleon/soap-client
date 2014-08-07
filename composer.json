@@ -1,6 +1,7 @@
 {
-    "name": "inteleon/soap-client",
+    "name": "inteleon/inteleon-soap-client",
     "description": "Inteleon Soap Client",
+    "license": "MIT",
     "authors": [
         {
             "name": "Andreas Tylegard",
