@@ -114,7 +114,7 @@ class InteleonSoapClient extends SoapClient
      */
     public function __doRequest($request, $location, $action, $version, $one_way = 0)
     {
-        for ($attempt = 0; $attempt < $this->connect_attempts; $attempt++) {
+        for ($attempt = 1; $attempt <= $this->connect_attempts; $attempt++) {
 
             $ch = curl_init($location);
 
@@ -139,18 +139,21 @@ class InteleonSoapClient extends SoapClient
             }
 
             $response = curl_exec($ch);
-
-            if (curl_errno($ch) !== 0 && $attempt >= $this->connect_attempts) {
-                throw new InteleonSoapClientException("cURL connection error: " . curl_error($ch));
-            }
-            
+            $errno = curl_errno($ch);
+            $error = curl_error($ch);
             curl_close($ch);
 
-            if (!$one_way) {
-                return ($response);
+            if ($errno !== 0) {
+                if ($attempt >= $this->connect_attempts) {
+                    throw new InteleonSoapClientException("cURL connection error: " . $error);
+                }
             } else {
-                return;
+                break; //Success
             }
+        }
+
+        if (!$one_way) {
+            return $response;
         }
     }
 }
