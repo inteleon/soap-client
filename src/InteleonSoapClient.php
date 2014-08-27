@@ -21,7 +21,7 @@ class InteleonSoapClient extends SoapClient
      * 
      * @todo Timeouts on the WSDL fetching??
      */
-    public function __construct($wsdl, $options)
+    public function __construct($wsdl, $options = array())
     {
         //Default options
         $this->setTimeout(30000);
@@ -145,7 +145,7 @@ class InteleonSoapClient extends SoapClient
 
             if ($errno !== 0) {
                 if ($attempt >= $this->connect_attempts) {
-                    throw new InteleonSoapClientException("cURL connection error: " . $error);
+                    throw new InteleonSoapClientException("cURL connection error after ".$this->connect_attempts." attempts. Last error: " . $error);
                 }
             } else {
                 break; //Success
