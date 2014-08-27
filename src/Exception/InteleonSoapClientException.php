@@ -5,5 +5,5 @@ use Exception;
 
 class InteleonSoapClientException extends Exception
 {
-    
+
 }

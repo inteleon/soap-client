@@ -9,16 +9,16 @@ class InteleonSoapClient extends SoapClient
 {
     /** @var array cURL options */
     protected $curl_options = array();
-    
+
     /** @var int Number of connect attempts to be made if connection error occurs */
     protected $connect_attempts;
 
     /**
      * Constructor
      *
-     * @param string $wsdl WSDL
-     * @param array $options SoapClient options
-     * 
+     * @param string $wsdl    WSDL
+     * @param array  $options SoapClient options
+     *
      * @todo Timeouts on the WSDL fetching??
      */
     public function __construct($wsdl, $options = array())
@@ -29,7 +29,7 @@ class InteleonSoapClient extends SoapClient
         $this->setConnectAttempts(1);
         $this->setVerifyCertificate(true);
         $this->setUserAgent(null);
-        
+
         //Set HTTP authentication username/password from SoapClient options
         if (isset($options['authentication']) && $options['authentication'] === SOAP_AUTHENTICATION_BASIC) {
             $this->setCurlOption(CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
@@ -75,7 +75,7 @@ class InteleonSoapClient extends SoapClient
 
     /**
      * FALSE to stop cURL from verifying the peer's certificate
-     * 
+     *
      * WARNING: Turning off CURLOPT_SSL_VERIFYPEER allows man in the middle
      * (MITM) attacks, which you don't want!
      *
@@ -109,7 +109,7 @@ class InteleonSoapClient extends SoapClient
 
     /**
      * Performs a SOAP request
-     * 
+     *
      * @see SoapClient class
      */
     public function __doRequest($request, $location, $action, $version, $one_way = 0)
