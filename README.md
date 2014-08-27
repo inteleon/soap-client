@@ -30,7 +30,7 @@ $client->setConnectTimeout(30000); //The number of milliseconds to wait while tr
 ### Connect attempts
 
 ```php
-$client->setConnectAttempts(2); //Number of connect attempts of connection fails
+$client->setConnectAttempts(2); //Number of connect attempts if connection fails
 ```
 
 ### Verify SSL certificate
