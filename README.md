@@ -1,22 +1,17 @@
 # Inteleon Soap Client
 
-Extends the native PHP Soap Client with some more options.
+Extends the native PHP Soap Client with some more options. The class uses cURL to make the requests. The usage is the same as the native SoapClient class.
 
-The usage is the same as the native SoapClient class.
+## Installation
 
-## Installation (Composer)
-
-Add this to your composer.json:
+Add to your `composer.json`:
 
 ```json
 "require": {
-    "inteleon/inteleon-soap-client": "*"
+    "inteleon/soap-client": "*"
 }
 ```
-
-Then run `composer install` inside that folder
-
-Then, in your code, just use the composer autoloader:
+Then run `composer install`.
 
 ## Set options
 
