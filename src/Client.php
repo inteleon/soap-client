@@ -1,11 +1,11 @@
 <?php
-namespace Inteleon;
+namespace Inteleon\Soap;
 
 use SoapClient;
 use RuntimeException;
-use Inteleon\Exception\InteleonSoapClientException;
+use Inteleon\Soap\Exception\ClientException;
 
-class InteleonSoapClient extends SoapClient
+class Client extends SoapClient
 {
     /** @var array cURL options */
     protected $curl_options = array();
@@ -16,8 +16,8 @@ class InteleonSoapClient extends SoapClient
     /**
      * Constructor
      *
-     * @param string $wsdl    WSDL
-     * @param array  $options SoapClient options
+     * @param string $wsdl WSDL
+     * @param array $options SoapClient options
      *
      * @todo Timeouts on the WSDL fetching??
      */
@@ -145,7 +145,7 @@ class InteleonSoapClient extends SoapClient
 
             if ($errno !== 0) {
                 if ($attempt >= $this->connect_attempts) {
-                    throw new InteleonSoapClientException("cURL connection error after ".$this->connect_attempts." attempts. Last error: " . $error);
+                    throw new ClientException("cURL connection error after ".$this->connect_attempts." attempts. Last error: " . $error);
                 }
             } else {
                 break; //Success

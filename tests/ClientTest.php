@@ -1,13 +1,13 @@
 <?php
 
-use Inteleon\InteleonSoapClient;
-use Inteleon\Exception\InteleonSoapClientException;
+use Inteleon\Soap\Client;
+use Inteleon\Soap\Exception\ClientException;
 
-class InteleonSoapClientTest extends PHPUnit_Framework_TestCase
+class ClientTest extends PHPUnit_Framework_TestCase
 {
     public function testCall()
     {
-        $client = new Inteleon\InteleonSoapClient('http://wsf.cdyne.com/WeatherWS/Weather.asmx?WSDL', array());
+        $client = new Client('http://wsf.cdyne.com/WeatherWS/Weather.asmx?WSDL', array());
         $result = $client->__soapCall('GetCityWeatherByZIP', array('GetCityWeatherByZIP' => array('ZIP' => '11001')));
         $this->assertEquals(1, $result->GetCityWeatherByZIPResult->Success);
     }
@@ -16,12 +16,12 @@ class InteleonSoapClientTest extends PHPUnit_Framework_TestCase
     public function testReconnect()
     {
         $start = microtime(true);
-        $client = new Inteleon\InteleonSoapClient(null, array('uri' => '', 'location' => ''));
+        $client = new Client(null, array('uri' => '', 'location' => ''));
         $client->setConnectTimeout(1000);
         $client->setConnectAttempts(3);
         try {
             $client->__soapCall('', array(), array('location' => '10.255.255.1', 'uri' => ''));
-        } catch (InteleonSoapClientException $e) {
+        } catch (ClientException $e) {
         }
         $this->assertGreaterThanOrEqual(3, round((microtime(true)-$start)));
     }
