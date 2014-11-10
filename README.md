@@ -4,14 +4,11 @@ Extends the native PHP Soap Client with some more options. The class uses cURL t
 
 ## Installation
 
-Add to your `composer.json`:
+~~Run: `composer require inteleon/soap-client`~~
 
-```json
-"require": {
-    "inteleon/soap-client": "*"
-}
-```
-Then run `composer install`.
+Package not registered on Packagist yet. Clone manually:
+
+`git clone https://github.com/Inteleon/Soap-Client`
 
 ## Set options
 
