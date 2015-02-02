@@ -1,16 +1,16 @@
 # Inteleon Soap Client
 
-Extends the native PHP Soap Client with some more options. The class uses cURL to make the requests. The usage is the same as the native SoapClient class.
+Extends the native PHP Soap Client with some more options. The class uses cURL to make the requests.
 
 ## Installation
 
-~~Run: `composer require inteleon/soap-client`~~
+Run: `composer require inteleon/soap-client`
 
-Package not registered on Packagist yet. Clone manually:
+## How to use
 
-`git clone https://github.com/Inteleon/Soap-Client`
+The usage is the same as the native [SoapClient class](http://php.net/manual/en/class.soapclient.php).
 
-## Set options
+## Options
 
 ### Timeouts (milliseconds)
 
